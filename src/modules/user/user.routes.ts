@@ -13,8 +13,6 @@ const userController = UserControllerFactory.create();
 
 routes.use(verifyAuth);
 
-routes.post("/", userController.createUser.bind(userController));
-
 routes.post("/", verifyRole(UserRoleEnum.ADMIN), userController.createUser.bind(userController));
 routes.get("/", verifyRole(UserRoleEnum.ADMIN), userController.getAllUsers.bind(userController));
 routes.get("/me", userController.getMe.bind(userController));
