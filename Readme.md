@@ -149,7 +149,7 @@ docker compose up --build
 
 ## Uso da API (Endpoints)
 
-A URL base para acesso local é `http://localhost:3000`.
+A URL base para acesso local é `http://localhost:3000` (porta configuravél em `API_PORT` do `.env` ).
 
 ### Autenticação e Autorização
 
@@ -161,7 +161,6 @@ A URL base para acesso local é `http://localhost:3000`.
 ### Endpoints Públicos
 
 - `GET /api/posts/:id`: Health check da API.
-- `POST /api/users`: Cria um novo usuário.
 - `GET /api/posts`: Lista posts com paginação.
 - `GET /api/posts/search`: Busca posts por título ou conteúdo.
 - `GET /api/posts/:id`: Busca um post pelo seu ID.
@@ -170,6 +169,7 @@ A URL base para acesso local é `http://localhost:3000`.
 
 - `POST /api/auth/login`: Realiza o login e retorna um `accessToken`.
 - `GET /api/users`: (Admin) Lista todos os usuários com paginação.
+- `POST /api/users`: Cria um novo usuário.
 - `GET /api/users/me`: (Autenticado) Retorna os dados do usuário logado.
 - `PUT /api/users/me`: (Autenticado) Atualiza os dados do usuário logado.
 - `DELETE /api/users/me`: (Autenticado) Remove o usuário logado.
