@@ -8,7 +8,7 @@ class AuthControllerFactory {
     const userRepository = new UserRepository();
     const userService = new UserService(userRepository);
     const authService = new AuthService(userService);
-    return new AuthController(authService);
+    return new AuthController(authService, userService);
   }
 }
 

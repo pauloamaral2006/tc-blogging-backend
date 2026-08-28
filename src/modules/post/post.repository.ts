@@ -27,6 +27,7 @@ class PostRepository implements IPostRepository {
         `
         Post.title ILIKE :search
         OR Post.content ILIKE :search
+        OR createdBy.name ILIKE :search
       `,
         {
           search: `%${search}%`,

@@ -13,7 +13,7 @@ class AuthService {
   async login(
     login: string,
     password: string,
-  ): Promise<{ accessToken: string } | null> {
+  ): Promise<{ accessToken: string; user: User } | null> {
     if (!login || !password) {
       throw new AppRegraNegocio("Login or Password invalid.");
     }
@@ -25,10 +25,12 @@ class AuthService {
     }
 
     if (user.isActive == false) {
-      throw new AppRegraNegocio("Account inactive. Please contact your administrator.")
+      throw new AppRegraNegocio(
+        "Account inactive. Please contact your administrator.",
+      );
     }
 
-    const doestPassword = await compare(password ?? '', user.password);
+    const doestPassword = await compare(password ?? "", user.password);
 
     if (!doestPassword) {
       throw new AppRegraNegocio("Login or Password invalid.");
@@ -41,6 +43,7 @@ class AuthService {
 
     return {
       accessToken: jwt.sign(payload, JWT_SECRET, { expiresIn: "2h" }),
+      user: user,
     };
   }
 }

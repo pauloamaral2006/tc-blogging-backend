@@ -1,5 +1,4 @@
 import type { IPost } from "./interfaces/post.interface.js";
-import type { Post } from "./post.entity.js";
 import PostRepository from "./post.repository.js";
 
 class PostService {
